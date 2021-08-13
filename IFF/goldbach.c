@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int verifica_par_maior_que_3(int n)
-{
-    return (n % 2 == 0 & n > 3);
-}
-
-int eh_primo(int n)
+int primo(int n)
 {
     int c = 0;
     for (int i = 1; i <= n; i++)
@@ -21,7 +16,7 @@ int eh_primo(int n)
 
 int conjectura(int n)
 {
-    if (!verifica_par_maior_que_3(n))
+    if (!(n % 2 == 0 & n > 3))
         return 0;
 
     int primos[n];
@@ -29,7 +24,7 @@ int conjectura(int n)
 
     for (int i = 2; i < n; ++i)
     {
-        if (eh_primo(i))
+        if (primo(i))
         {
             primos[p] = i;
             p++;
@@ -41,6 +36,7 @@ int conjectura(int n)
         {
             if (n == (primos[i] + primos[j]))
             {
+                printf("%d + %d = %d", primos[i], primos[j], n);
                 return 1;
             }
         }
